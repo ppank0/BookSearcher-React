@@ -1,0 +1,19 @@
+footer{
+    bottom: 0;
+    background-color: rgba(12,77,37,1);
+    width: -webkit-fill-available;
+}
+footer p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    padding: .3rem 0;
+    color: white;
+}
+footer p a{
+    color: white;
+}
+footer p a:hover{
+    color: rgb(83, 124, 93);
+}
