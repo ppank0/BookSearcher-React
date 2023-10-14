@@ -1,0 +1,15 @@
+.header{
+    /* background-color: rgb(15, 97, 47); */
+    background-color: rgba(12,77,37,1);
+    padding: 15px 30px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.header-img{
+    width: 50px;
+}
+.header-logo{
+    width: 200px;
+}

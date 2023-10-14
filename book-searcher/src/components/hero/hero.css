@@ -1,0 +1,28 @@
+.hero-section{
+    height: 100vh;
+    background: url('../../img/bg.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.hero-p{
+    color: white;
+    font-size: 30px;
+    padding-top: 5vh;
+}
+.hero-search{
+    margin-top: 2rem;
+    border: 1px solid white;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    padding: .65rem 1.5rem;
+    gap: 10vw;
+}
+.search-input{
+    caret-color: white;
+}
+.hero__search-icon{
+    width: 32px;
+}
