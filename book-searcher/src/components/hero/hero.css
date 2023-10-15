@@ -24,6 +24,7 @@
 }
 .search-input{
     caret-color: white;
+    color: white;
 }
 .hero__search-icon{
     width: 32px;
@@ -36,4 +37,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 0.5fr));
     gap: 1rem;
+}
+.message-container{
+    text-align: center;
 }

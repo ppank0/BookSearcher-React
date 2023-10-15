@@ -3,6 +3,7 @@ import React,{Component } from 'react'
 import searchIcon from '../../img/icons-search.svg'
 import searchIcon2 from '../../img/cross.svg'
 import Card from '../card/Card'
+import Message from '../message/Message'
 
 class Hero extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class Hero extends Component {
     this.state = {
       inputValue: '',
       isSearching: false,
+      showNoResults: false,
       bookData: [],
     };
   }
@@ -22,6 +24,7 @@ class Hero extends Component {
   const inputValue = event.target.value;
   const isSearching = inputValue !== '';
   this.setState({ inputValue, isSearching });
+  
 };
 
   handleKeyDown = (event) => {
@@ -33,13 +36,17 @@ class Hero extends Component {
         .then(response => response.json())
         .then(data => {
           console.log(data);
-
-          const bookData = data.items.map(item => ({
+          if(data.items && data.items.length > 0){
+            
+            const bookData = data.items.map(item => ({
             title: item.volumeInfo.title,
             image: item.volumeInfo.imageLinks.thumbnail,
           }));
-          this.setState({ bookData });
-        
+          this.setState({ bookData, showNoResults: false });
+          }
+          else{
+            this.setState({ bookData: [], showNoResults: true });
+          }
         })
         .catch(error => {
           console.error(error);
@@ -49,7 +56,7 @@ class Hero extends Component {
 
 
     render() {
-      const { inputValue, isSearching, bookData } = this.state;
+      const { inputValue, isSearching, bookData, showNoResults } = this.state;
       return (
         <main className='hero-section'>
             <p className='hero-p'>Find Book You Need</p>
@@ -67,14 +74,22 @@ class Hero extends Component {
                 </a>
             </div>
 
+            
             <div className="container">
-            {bookData.map((book, index) => (
-            <Card
-              key={index}
-              bookData={book}
-            />
-          ))}
+            {bookData&&bookData.map((book, index) => (
+                <Card
+                  key={index}
+                  bookData={book}
+                />
+              ))}
             </div>
+
+        {showNoResults === true &&(
+        <div className="message-container">
+            <Message />
+        </div>
+        )}
+            
         </main>
       );
     }
